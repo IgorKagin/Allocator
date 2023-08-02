@@ -82,7 +82,7 @@ namespace Alloc
     void dealloc( T* & ptr, const size_t& n )
     {
       auto arr = std::prev( memory.upper_bound( reinterpret_cast< pool* >( ptr ) ) );
-      ::operator delete( arr->first, n );
+      ::operator delete( arr->first );
     }
 
   };
