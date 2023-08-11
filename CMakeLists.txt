@@ -21,14 +21,14 @@ set(HEADERS
   include/vector.hpp
 )
 
-add_executable( main ${SOURCES} )
+add_executable( exe ${SOURCES} )
 add_library( ${PROJECT_NAME} ${HEADERS} )
 
-target_include_directories(main PRIVATE include)
+target_include_directories(exe PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(main ${PROJECT_NAME})
 
-set_target_properties(main Solution PROPERTIES
+set_target_properties(exe ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
 )
@@ -36,13 +36,13 @@ set_target_properties(main Solution PROPERTIES
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR})
 
 if(MSVC)
-  target_compile_options(main PRIVATE /W4)
+  target_compile_options(exe PRIVATE /W4)
 else()
-  target_compile_options(main PRIVATE
+  target_compile_options(exe PRIVATE
         -Wall -Wextra -pedantic -Werror)
 endif()
 
-install(TARGETS main RUNTIME DESTINATION bin)
+install(TARGETS exe RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
