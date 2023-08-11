@@ -39,13 +39,13 @@ set_target_properties(
 )
 
 if(MSVC)
-  target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+  target_compile_options(main PRIVATE /W4)
 else()
-  target_compile_options(${PROJECT_NAME} PRIVATE
+  target_compile_options(main PRIVATE
         -Wall -Wextra -pedantic -Werror)
 endif()
 
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+install(TARGETS main RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
