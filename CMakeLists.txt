@@ -4,6 +4,9 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VERSION ${PATCH_VERSION})
 set( PROJECT_NAME Solution )
 
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
 #add_definitions(-DDEBUG_PRINT)
 
 project( ${PROJECT_NAME} VERSION ${PROJECT_VERSION})
@@ -23,10 +26,12 @@ set(HEADERS
 
 add_executable( exe ${SOURCES} )
 add_library( ${PROJECT_NAME} ${HEADERS} )
+add_executable( Test /test/src/testSolution.cpp)
 
 target_include_directories(exe PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(exe ${PROJECT_NAME})
+target_link_libraries(Test ${GTEST_LIBRARIES} pthread)
 
 set_target_properties(exe ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
