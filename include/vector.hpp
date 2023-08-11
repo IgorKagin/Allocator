@@ -24,7 +24,7 @@ using namespace VectorRealize;
       ++i;
     }
 
-    if ( std::is_same_v<decltype( alloc ), std::allocator<T>> )
+    if ( std::is_same<decltype( alloc ), std::allocator<T>>::value )
       AllocTraits::deallocate( alloc, arr, cap );
     else
     {
@@ -61,7 +61,7 @@ using namespace VectorRealize;
         AllocTraits::destroy( alloc, arr + i );
       }
 
-      if ( std::is_same_v<decltype( alloc ), std::allocator<T>> )
+      if ( std::is_same<decltype( alloc ), std::allocator<T>>::value )
       {
         AllocTraits::deallocate( alloc, arr, sz );
       }
@@ -73,7 +73,7 @@ using namespace VectorRealize;
       {
         AllocTraits::destroy( alloc, newarr + j );
         AllocTraits::deallocate( alloc, newarr + j, n );
-        if ( std::is_same_v<decltype( alloc ), std::allocator<T>> )
+        if ( std::is_same<decltype( alloc ), std::allocator<T>>::value )
           break;
       }
       throw;
