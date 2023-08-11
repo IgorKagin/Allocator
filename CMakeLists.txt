@@ -33,7 +33,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR})
 target_link_libraries(main ${PROJECT_NAME})
 
 set_target_properties(
-  ${PROJECT_NAME} main PROPERTIES
+  main Solution PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
 )
