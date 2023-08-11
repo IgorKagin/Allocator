@@ -6,7 +6,7 @@ set( PROJECT_NAME Solution )
 
 #add_definitions(-DDEBUG_PRINT)
 
-project( ${PROJECT_NAME} ${PROJECT_LANGUAGES})
+project( ${PROJECT_NAME} VERSION ${PROJECT_VERSION})
 
 configure_file(version.h.in version.h)
 
