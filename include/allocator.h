@@ -60,7 +60,7 @@ namespace Alloc
   template <typename T, size_t N = DefaultSize>
   class Allocator
   {
-    static_assert( !std::is_same_v<T, void>, "Type of the allocator can not be void" );
+    //static_assert( !std::is_same_v<T, void>, "Type of the allocator can not be void" );
 
   public:
     using value_type = T;
