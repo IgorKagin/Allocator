@@ -54,7 +54,7 @@ T* Pool<T, N>::Allocate( size_t& n )
       }
       else
       {
-        throw std::exception( "Memory is filled" );
+        throw std::runtime_error( "Memory is filled" );
       }
     }
     return AppendNewChunk( n );
