@@ -15,10 +15,10 @@ set( SOURCES
 )
 
 set(HEADERS
-include/allocator.h
-include/allocator.hpp
-include/vector.h
-include/vector.hpp
+  include/allocator.h
+  include/allocator.hpp
+  include/vector.h
+  include/vector.hpp
 )
 
 add_executable( main ${SOURCES} )
