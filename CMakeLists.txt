@@ -26,14 +26,14 @@ add_library( ${PROJECT_NAME} ${HEADERS} )
 
 target_include_directories(main PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR})
-
 target_link_libraries(main ${PROJECT_NAME})
 
 set_target_properties(main Solution PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
 )
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR})
 
 if(MSVC)
   target_compile_options(main PRIVATE /W4)
