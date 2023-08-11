@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.12)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VERSION ${PATCH_VERSION})
-
-set( PROJECT_LANGUAGES CXX )
 set( PROJECT_NAME Solution )
 
 #add_definitions(-DDEBUG_PRINT)
