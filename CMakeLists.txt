@@ -31,7 +31,7 @@ add_executable( Test /test/src/testSolution.cpp)
 target_include_directories(exe PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(exe ${PROJECT_NAME})
-target_link_libraries(Test ${GTEST_LIBRARIES} pthread)
+target_link_libraries(Test ${GTEST_LIBRARIES} ${PROJECT_NAME})
 
 set_target_properties(exe ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
