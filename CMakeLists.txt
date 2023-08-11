@@ -30,6 +30,7 @@ target_link_libraries(main ${PROJECT_NAME})
 
 set_target_properties(exe ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
+  LINKER_LANGUAGE CXX
   CXX_STANDARD_REQUIRED ON
 )
 
