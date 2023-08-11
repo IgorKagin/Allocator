@@ -98,7 +98,7 @@ using namespace VectorRealize;
   void Vector<T, Allocator>::pop_back()
   {
     --sz;
-    AllocTraits::destroy( alloc, arr + sz - 1 )
+    AllocTraits::destroy( alloc, arr + sz - 1 );
   }
 
   template<typename T, class Allocator>
