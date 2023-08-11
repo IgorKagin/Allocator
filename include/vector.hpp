@@ -50,7 +50,7 @@ using namespace VectorRealize;
     }
 
     size_t i = 0;  
-    T* newarr;
+    T* newarr = nullptr;
     try
     {
       newarr = AllocTraits::allocate( alloc, n );
