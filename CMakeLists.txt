@@ -4,7 +4,7 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VERSION ${PATCH_VERSION})
 
 set( PROJECT_LANGUAGES CXX )
-set( PROJECT_NAME alloc )
+set( PROJECT_NAME Solution )
 
 #add_definitions(-DDEBUG_PRINT)
 
@@ -23,17 +23,17 @@ include/vector.h
 include/vector.hpp
 )
 
-add_executable( ${PROJECT_NAME} ${SOURCES} )
-add_library(solution_lib ${HEADERS} )
+add_executable( main ${SOURCES} )
+add_library( ${PROJECT_NAME} ${HEADERS} )
 
+target_include_directories(main PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_include_directories(solution_lib PRIVATE include)
-target_include_directories(solution_lib PRIVATE ${CMAKE_BINARY_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR})
 
-target_link_libraries(${PROJECT_NAME} solution_lib)
+target_link_libraries(main ${PROJECT_NAME})
 
 set_target_properties(
-  ${PROJECT_NAME} solution_lib PROPERTIES
+  ${PROJECT_NAME} main PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
 )
