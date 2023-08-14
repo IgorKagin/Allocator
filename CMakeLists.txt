@@ -4,10 +4,15 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VERSION ${PATCH_VERSION})
 set( PROJECT_NAME Solution )
 
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
-
+#find_package(GTest REQUIRED)
+#include_directories(${GTEST_INCLUDE_DIRS})
 #add_definitions(-DDEBUG_PRINT)
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+  )
 
 project( ${PROJECT_NAME} VERSION ${PROJECT_VERSION})
 
@@ -31,7 +36,10 @@ add_executable( Test /test/src/testSolution.cpp)
 target_include_directories(exe PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(exe ${PROJECT_NAME})
-target_link_libraries(Test ${GTEST_LIBRARIES} ${PROJECT_NAME})
+target_link_libraries(Test GTest::gtest_main ${PROJECT_NAME})
+
+include(GoogleTest)
+gtest_discover_tests(Test)
 
 set_target_properties(exe ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
