@@ -31,12 +31,12 @@ set(HEADERS
 
 add_executable( exe ${SOURCES} )
 add_library( ${PROJECT_NAME} ${HEADERS} )
-add_executable( Test /test/src/testSolution.cc)
+add_executable( Test /test/src/testSolution.cpp)
 
 target_include_directories(exe PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(exe ${PROJECT_NAME})
-target_link_libraries(Test GTest::gtest_main ${PROJECT_NAME})
+target_link_libraries(Test GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(Test)
