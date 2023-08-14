@@ -9,9 +9,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - run: sudo apt-get install libgtest-dev build-essential cmake
-      - run: cd /usr/src/googletest
-      - run: sudo cmake .
+      #- run: sudo apt-get install libgtest-dev build-essential cmake
+      #- run: cd /usr/src/googletest
+      #- run: sudo cmake .
       - run: sudo cmake --build . --target install
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build .
