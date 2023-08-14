@@ -31,7 +31,7 @@ set(HEADERS
 
 add_executable( exe ${SOURCES} )
 add_library( ${PROJECT_NAME} ${HEADERS} )
-add_executable( Test testSolution.cpp)
+add_executable( Test test/src/testSolution.cpp)
 
 target_include_directories(exe PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
