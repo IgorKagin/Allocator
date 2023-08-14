@@ -44,9 +44,6 @@ target_link_libraries(exe ${PROJECT_NAME})
 target_include_directories(Test PRIVATE include)
 target_link_libraries(Test gtest gtest_main)
 
-#include(GoogleTest)
-#gtest_discover_tests(Test)
-
 set_target_properties(exe ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
   LINKER_LANGUAGE CXX
