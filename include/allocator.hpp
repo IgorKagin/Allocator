@@ -62,8 +62,10 @@ T* Pool<T, N>::Allocate( size_t& n )
 }
 
 template <typename T, size_t N>
-void Pool<T, N>::Deallocate( T* p ) noexcept
+void Pool<T, N>::Deallocate( T* p, const size_t& n  ) noexcept
 {
+  if ( p == nullptr )
+    return;
 #ifdef DEBUG_PRINT
   std::cout << "deallocate: " << p << std::endl;
 #endif
@@ -73,7 +75,7 @@ void Pool<T, N>::Deallocate( T* p ) noexcept
   std::cout << "deallocate chunk: " << chunk->first << std::endl;
 #endif
 
-  if ( --chunk->second == 0 )
+  if ( (chunk->second -= n) <= 0  )
   {
     delete chunk->first;
     allocatorPool.erase( chunk );
