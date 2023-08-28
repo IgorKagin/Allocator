@@ -32,7 +32,7 @@ namespace Alloc
     T* Allocate( size_t&  );
 
     // Деаллокация
-    void Deallocate( T* ) noexcept;
+    void Deallocate( T*, const size_t& ) noexcept;
 
   private:
 
@@ -94,9 +94,9 @@ namespace Alloc
     }
 
     // Деаллокация
-    void deallocate( pointer p, size_type /*n*/ )
+    void deallocate( pointer p, size_type n )
     {
-      Pool<T, N>::GetInstance().Deallocate( p );
+      Pool<T, N>::GetInstance().Deallocate( p, n );
     }
   };
 
