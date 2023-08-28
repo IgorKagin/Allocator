@@ -23,19 +23,7 @@ using namespace VectorRealize;
       AllocTraits::destroy( alloc, arr + i);
       ++i;
     }
-
-    if ( std::is_same<decltype( alloc ), std::allocator<T>>::value )
-      AllocTraits::deallocate( alloc, arr, cap );
-    else
-    {
-      size_t i = 0;
-      while ( i < cap )
-      {
-        AllocTraits::deallocate( alloc, arr + i, 1 );
-        ++i;
-      }
-    }
-
+    AllocTraits::deallocate( alloc, arr, cap );
   }
 
   template<typename T, class Allocator>
@@ -60,11 +48,7 @@ using namespace VectorRealize;
         AllocTraits::construct( alloc, newarr + i, arr[ i ] );
         AllocTraits::destroy( alloc, arr + i );
       }
-
-      if ( std::is_same<decltype( alloc ), std::allocator<T>>::value )
-      {
-        AllocTraits::deallocate( alloc, arr, sz );
-      }
+      AllocTraits::deallocate( alloc, arr, sz );
     }
 
     catch ( const std::exception&e )
@@ -72,10 +56,8 @@ using namespace VectorRealize;
       for ( size_t j = 0; j < i; ++j )
       {
         AllocTraits::destroy( alloc, newarr + j );
-        AllocTraits::deallocate( alloc, newarr + j, n );
-        if ( std::is_same<decltype( alloc ), std::allocator<T>>::value )
-          break;
       }
+      AllocTraits::deallocate( alloc, newarr, n );
       throw;
     }
     arr = newarr;
