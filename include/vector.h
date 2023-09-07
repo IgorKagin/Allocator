@@ -25,6 +25,11 @@ namespace VectorRealize
 
     ~Vector();
 
+    Vector( const Vector& ) = delete;
+    Vector& operator = ( const Vector& ) = delete;
+    Vector( Vector&& ) = delete;
+    Vector& operator = ( Vector&& ) = delete;
+
     void reserve( size_t n );  
 
     void push_back( const T& value );
